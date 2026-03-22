@@ -1,18 +1,13 @@
-<h1>My Tasks</h1>
-<ul>
-  {% for task in tasks %}
-  <li>
-    <strong>{{ task.title }}</strong>
-    <br />
-    <span>Description: {{ task.description }} </span>
-    <br />
-    <span>Status: {{ task.status.status }} </span>
-    <br />
-    <small>Created on: {{ task.created_on|date:"d/m/Y H:i" }}</small>
-    <hr />
-  </li>
-  {% empty %}
-  <li>No task has been found.</li>
-  {% endfor %}
-</ul>
 <a href="{% url 'new_task' %}">➕ Add New Task</a>
+
+<h1>My Tasks</h1>
+
+{% for task in tasks %}
+<strong>✅ {{ task.title }}</strong> - {{ task.description }}
+<br />
+Status: {{ task.status.status }}
+<br />
+<small>Created on: {{ task.created_on|date:"d/m/Y H:i" }}</small>
+<hr />
+{% empty %} No task has been found. {% endfor %}
+<br />
