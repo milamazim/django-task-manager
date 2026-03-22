@@ -1,8 +1,18 @@
-<h1>Lista de Tarefas</h1>
+<h1>My Tasks</h1>
 <ul>
-  {% for i in tasks %}
-  <li>{{ i.title }}</li>
+  {% for task in tasks %}
+  <li>
+    <strong>{{ task.title }}</strong>
+    <br />
+    <span>Description: {{ task.description }} </span>
+    <br />
+    <span>Status: {{ task.status.status }} </span>
+    <br />
+    <small>Created on: {{ task.created_on|date:"d/m/Y H:i" }}</small>
+    <hr />
+  </li>
   {% empty %}
-  <li>Nenhum status cadastrado.</li>
+  <li>No task has been found.</li>
   {% endfor %}
 </ul>
+<a href="{% url 'new_task' %}">➕ Add New Task</a>
