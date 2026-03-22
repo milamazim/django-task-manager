@@ -1,0 +1,8 @@
+<h1>Lista de Tarefas</h1>
+<ul>
+  {% for i in tasks %}
+  <li>{{ i.title }}</li>
+  {% empty %}
+  <li>Nenhum status cadastrado.</li>
+  {% endfor %}
+</ul>
