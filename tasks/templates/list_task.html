@@ -5,7 +5,7 @@
 {% for task in tasks %}
 <strong>✅ {{ task.title }}</strong> - {{ task.description }}
 <br />
-Status: {{ task.status.status }}
+Status: {{ task.status.name }}
 <br />
 <small>Created on: {{ task.created_on|date:"d/m/Y H:i" }}</small>
 <hr />
