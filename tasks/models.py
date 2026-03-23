@@ -3,12 +3,12 @@ from django.db import models
 
 class Status(models.Model):
     name = models.CharField(max_length=200)
-    
+
     def __str__(self):
         return self.name
-    
+
     class Meta:
-        verbose_name = 'Status'        
+        verbose_name = 'Status'
         verbose_name_plural = 'Status' # para nao colocar um S adicional como plural
 
 
