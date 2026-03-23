@@ -13,6 +13,8 @@
     <br />
     <small>Created on: {{ task.created_on|date:"d/m/Y H:i" }}</small>
     <br />
+    <small>Last update: {{ task.updated_on|date:"d/m/Y H:i" }}</small>
+    <br />
     📝
     <a href="{% url 'task_edit' task.id %}">Edit</a>
     <hr />
