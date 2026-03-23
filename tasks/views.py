@@ -14,17 +14,21 @@ def new_task(request):
             return redirect('task_list')
     else:
         form = TaskForm()
-    
     return render(request, 'new_task.html', {'form': form})
 
-def task_finish(request, pk):
+def task_edit(request, pk):
     task = Task.objects.get(id=pk)
-    status = Status.objects.get(name='Finished')
-    task.status = status
-    task.save()    
-    return redirect('task_list')
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('task_list')
+    else:
+        form = TaskForm(instance=task)
+    return render(request, 'edit_task.html', {'form': form, 'task': task})
+
 
 def task_delete(request, pk):
-    task = Task.objects.get(id=pk)    
-    task.delete()    
+    task = Task.objects.get(id=pk)
+    task.delete()
     return redirect('task_list')
