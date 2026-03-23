@@ -10,7 +10,8 @@
   <br />
   <small>Created on: {{ task.created_on|date:"d/m/Y H:i" }}</small>
   <br />
-  <a href="{% url 'task_finish' task.id %}">Finish</a>
+  <a href="{% url 'task_finish' task.id %}">Finish</a> |
+  <a href="{% url 'task_delete' task.id %}">Delete</a>
   <hr />
 </div>
 {% empty %}

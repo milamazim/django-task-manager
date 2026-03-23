@@ -23,3 +23,8 @@ def task_finish(request, pk):
     task.status = status
     task.save()    
     return redirect('task_list')
+
+def task_delete(request, pk):
+    task = Task.objects.get(id=pk)    
+    task.delete()    
+    return redirect('task_list')
