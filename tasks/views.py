@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from tasks.models import Task
+from tasks.models import Task, Status
 from tasks.forms import TaskForm
 
 def task_list(request):
@@ -16,3 +16,10 @@ def new_task(request):
         form = TaskForm()
     
     return render(request, 'new_task.html', {'form': form})
+
+def task_finish(request, pk):
+    task = Task.objects.get(id=pk)
+    status = Status.objects.get(name='Finished')
+    task.status = status
+    task.save()    
+    return redirect('task_list')

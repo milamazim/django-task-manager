@@ -3,11 +3,16 @@
 <h1>My Tasks</h1>
 
 {% for task in tasks %}
-<strong>✅ {{ task.title }}</strong> - {{ task.description }}
-<br />
-Status: {{ task.status.name }}
-<br />
-<small>Created on: {{ task.created_on|date:"d/m/Y H:i" }}</small>
-<hr />
-{% empty %} No task has been found. {% endfor %}
-<br />
+<div>
+  <strong>{{ task.title }}</strong> - {{ task.description }}
+  <br />
+  Status: {{ task.status.name }}
+  <br />
+  <small>Created on: {{ task.created_on|date:"d/m/Y H:i" }}</small>
+  <br />
+  <a href="{% url 'task_finish' task.id %}">Concluir</a>
+  <hr />
+</div>
+{% empty %}
+<p>No task has been found.</p>
+{% endfor %}
