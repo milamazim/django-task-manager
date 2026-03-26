@@ -1,7 +1,13 @@
-<h1>New Task</h1>
+{% extends 'base.html' %} {% block title %}New Task{% endblock %} {% block content %}
+<h1>✏️ New Task</h1>
 <form method="POST">
     {% csrf_token %}
     <table>{{ form.as_table }}</table>
-    <p><button type="submit">Save</button></p>
+    <p>
+        <button type="submit">Save</button>
+    </p>
 </form>
-<a href="{% url 'task_list' %}">Cancel</a>
+<div class="task-actions">
+    <a href="{% url 'task_list' %}">Cancel</a>
+</div>
+{% endblock %}
